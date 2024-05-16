@@ -17,7 +17,9 @@
 
 ### import
 
-    from ohmslaw import Ohms
+```python
+from ohmslaw import Ohms
+```
 
 ### current multiplied by resistance = voltage
 
