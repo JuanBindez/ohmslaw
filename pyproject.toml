@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=67.4.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ohmslaw"
+version = "1.0-rc1"
+authors = [
+  { name="Juan Bindez", email="juanbindez780@gmail.com" },
+]
+description = "Python3 library for Ohms law."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "GPLv2 license"}
+keywords = ["eletric", "ohms", "calc", "tools",]
+classifiers = [
+	"Development Status :: 5 - Production/Stable",
+	"Environment :: Console",
+	"Intended Audience :: Developers",
+	"License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+	"Natural Language :: English",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3.7",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Programming Language :: Python",
+	"Topic :: Internet",
+	"Topic :: Software Development :: Libraries :: Python Modules",
+	"Topic :: Terminals",
+	"Topic :: Utilities",
+]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/juanbindez/ohmslaw"
+"Bug Reports" = "https://github.com/juanbindez/ohmslaw/issues"
+"Read the Docs" = "http://ohmslaw.readthedocs.io/"
+
+[project.scripts]
+ohmslaw = "ohmslaw.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ohmslaw*"]
+
+[tool.setuptools]
+license-files = ["LICENSE"]

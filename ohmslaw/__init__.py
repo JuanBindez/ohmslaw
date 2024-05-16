@@ -1,0 +1,1 @@
+from ohmslaw.__main__ import Ohms
