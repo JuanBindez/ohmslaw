@@ -48,3 +48,11 @@ class OhmsCLI:
 if __name__ == "__main__":
     cli = OhmsCLI()
     cli.run()
+
+"""
+    python cli.py volts -I 2 -R 4
+    python cli.py current -V 10 -R 5
+    python cli.py resistance -V 5 -I 2
+    python cli.py find_resistor --source 10 --component_voltage 2
+
+"""
