@@ -59,7 +59,7 @@ def main() -> str:
     elif args.operation == 'resistance':
         result = str(calculate_resistance(args.V, args.I)) + " Ohms"
     elif args.operation == 'find_resistor':
-        result = str(find_resistor(args.source, args.component_voltage, args.component_current)) + "Ohms"
+        result = str(find_resistor(args.source, args.component_voltage, args.component_current)) + " Ohms"
 
     return result
 
