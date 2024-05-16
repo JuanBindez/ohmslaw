@@ -66,4 +66,4 @@ class Ohms:
         
         
         U = source - component_voltage
-        return U/component_current
+        return U / component_current
