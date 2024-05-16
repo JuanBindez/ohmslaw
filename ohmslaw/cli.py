@@ -50,7 +50,7 @@ def main() -> str:
 
     args = parser.parse_args()
 
-    result = []
+    result = None
 
     if args.operation == 'volts':
         result = str(calculate_volts(args.I, args.R)) + "V"
@@ -61,7 +61,6 @@ def main() -> str:
     elif args.operation == 'find_resistor':
         result = str(find_resistor(args.source, args.component_voltage, args.component_current)) + "Ohms"
 
-    print(result)
     return result
 
 if __name__ == "__main__":
