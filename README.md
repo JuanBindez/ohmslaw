@@ -1,0 +1,2 @@
+# ohmslaw
+ohms law calc
