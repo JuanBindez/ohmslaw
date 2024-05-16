@@ -30,7 +30,7 @@ class OhmsCLI:
         find_resistor_parser.add_argument('--component_voltage', type=float, required=True, help='Component voltage in volts')
         find_resistor_parser.add_argument('--component_current', type=float, default=0.02, help='Component current in amperes (default: 0.02)')
 
-    def run(self):
+    def main(self):
         args = self.parser.parse_args()
         ohms = Ohms()
 
@@ -47,7 +47,7 @@ class OhmsCLI:
 
 if __name__ == "__main__":
     cli = OhmsCLI()
-    cli.run()
+    cli.main()
 
 """
     python cli.py volts -I 2 -R 4
