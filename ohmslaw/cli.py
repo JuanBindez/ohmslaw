@@ -50,16 +50,19 @@ def main():
 
     args = parser.parse_args()
 
-    if args.operation == 'volts':
-        result = calculate_volts(args.I, args.R)
-    elif args.operation == 'current':
-        result = calculate_current(args.V, args.R)
-    elif args.operation == 'resistance':
-        result = calculate_resistance(args.V, args.I)
-    elif args.operation == 'find_resistor':
-        result = find_resistor(args.source, args.component_voltage, args.component_current)
+    result = []
 
-    print("Result:", result)
+    if args.operation == 'volts':
+        result = calculate_volts(args.I, args.R) + "V"
+    elif args.operation == 'current':
+        result = calculate_current(args.V, args.R) + "A"
+    elif args.operation == 'resistance':
+        result = calculate_resistance(args.V, args.I) + "Ohms"
+    elif args.operation == 'find_resistor':
+        result = find_resistor(args.source, args.component_voltage, args.component_current) + "Ohms"
+
+    print(result)
+    return result
 
 if __name__ == "__main__":
     main()
