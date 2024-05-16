@@ -53,11 +53,11 @@ def main():
     result = []
 
     if args.operation == 'volts':
-        result = calculate_volts(args.I, args.R) + "V"
+        result = calculate_volts(args.I, args.R), + "V"
     elif args.operation == 'current':
-        result = calculate_current(args.V, args.R) + "A"
+        result = calculate_current(args.V, args.R), + "A"
     elif args.operation == 'resistance':
-        result = calculate_resistance(args.V, args.I) + "Ohms"
+        result = calculate_resistance(args.V, args.I), + "Ohms"
     elif args.operation == 'find_resistor':
         result = find_resistor(args.source, args.component_voltage, args.component_current) + "Ohms"
 
