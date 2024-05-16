@@ -1,7 +1,7 @@
 class Ohms:
     """A class representing basic electrical calculations based on Ohm's Law."""
     
-    def voltage(self, I: float, R: float) -> float:
+    def volts(self, I: float, R: float) -> float:
         """
         Calculate voltage using Ohm's Law.
 

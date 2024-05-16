@@ -1,6 +1,6 @@
 from ohmslaw import Ohms
 
 o = Ohms()
-results = o.resistance(V=48, I=4)
+results = o.find_resistor(source=48, component_voltage=12)
 
 print(results)
