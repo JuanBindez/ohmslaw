@@ -1,50 +1,48 @@
 import argparse
 
+from ohmslaw.__main__ import Ohms
+
 class OhmsCLI:
     """Command line interface for Ohms calculations."""
 
     def __init__(self):
         self.parser = argparse.ArgumentParser(description='Perform electrical calculations based on Ohm\'s Law')
-        self.parser.add_argument('operation', choices=['volts', 'current', 'resistance', 'find_resistor'], help='The operation to perform')
-        self.parser.add_argument('-V', type=float, help='Voltage in volts')
-        self.parser.add_argument('-I', type=float, help='Current in amperes')
-        self.parser.add_argument('-R', type=float, help='Resistance in ohms')
-        self.parser.add_argument('--source', type=float, help='Source voltage in volts')
-        self.parser.add_argument('--component_voltage', type=float, help='Component voltage in volts')
-        self.parser.add_argument('--component_current', type=float, default=0.02, help='Component current in amperes (default: 0.02)')
+        self.subparsers = self.parser.add_subparsers(dest='operation', help='Operation to perform')
+
+        # Subparser for volts operation
+        volts_parser = self.subparsers.add_parser('volts', help='Calculate voltage using Ohm\'s Law')
+        volts_parser.add_argument('-I', type=float, required=True, help='Current in amperes')
+        volts_parser.add_argument('-R', type=float, required=True, help='Resistance in ohms')
+
+        # Subparser for current operation
+        current_parser = self.subparsers.add_parser('current', help='Calculate current using Ohm\'s Law')
+        current_parser.add_argument('-V', type=float, required=True, help='Voltage in volts')
+        current_parser.add_argument('-R', type=float, required=True, help='Resistance in ohms')
+
+        # Subparser for resistance operation
+        resistance_parser = self.subparsers.add_parser('resistance', help='Calculate resistance using Ohm\'s Law')
+        resistance_parser.add_argument('-V', type=float, required=True, help='Voltage in volts')
+        resistance_parser.add_argument('-I', type=float, required=True, help='Current in amperes')
+
+        # Subparser for find_resistor operation
+        find_resistor_parser = self.subparsers.add_parser('find_resistor', help='Calculate resistor value to limit current')
+        find_resistor_parser.add_argument('--source', type=float, required=True, help='Source voltage in volts')
+        find_resistor_parser.add_argument('--component_voltage', type=float, required=True, help='Component voltage in volts')
+        find_resistor_parser.add_argument('--component_current', type=float, default=0.02, help='Component current in amperes (default: 0.02)')
 
     def run(self):
         args = self.parser.parse_args()
         ohms = Ohms()
-        
+
         if args.operation == 'volts':
-            if args.I is not None and args.R is not None:
-                result = ohms.volts(args.I, args.R)
-            else:
-                print("Error: Voltage calculation requires both current (I) and resistance (R) values.")
-                return
+            result = ohms.volts(args.I, args.R)
         elif args.operation == 'current':
-            if args.V is not None and args.R is not None:
-                result = ohms.current(args.V, args.R)
-            else:
-                print("Error: Current calculation requires both voltage (V) and resistance (R) values.")
-                return
+            result = ohms.current(args.V, args.R)
         elif args.operation == 'resistance':
-            if args.V is not None and args.I is not None:
-                result = ohms.resistance(args.V, args.I)
-            else:
-                print("Error: Resistance calculation requires both voltage (V) and current (I) values.")
-                return
+            result = ohms.resistance(args.V, args.I)
         elif args.operation == 'find_resistor':
-            if args.source is not None and args.component_voltage is not None:
-                result = ohms.find_resistor(args.source, args.component_voltage, args.component_current)
-            else:
-                print("Error: Find resistor calculation requires source voltage and component voltage.")
-                return
-        else:
-            print("Error: Invalid operation.")
-            return
-        
+            result = ohms.find_resistor(args.source, args.component_voltage, args.component_current)
+
         print("Result:", result)
 
 if __name__ == "__main__":
