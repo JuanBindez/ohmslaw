@@ -43,7 +43,6 @@ print(results)
 
 ```
 
-
 ### voltage divided by current = resistance
 
 ```python
