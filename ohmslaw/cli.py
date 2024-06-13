@@ -17,6 +17,11 @@ def calculate_resistance(V, I):
     ohms = Ohms()
     return ohms.resistance(V, I)
 
+def calculate_watts(I, R):
+    """Calculate Watts."""
+    ohms = Ohms()
+    return ohms.watts(I, R)
+
 def find_resistor(source, component_voltage, component_current=0.02):
     """Calculate resistor value to limit current."""
     ohms = Ohms()
@@ -42,6 +47,10 @@ def main() -> str:
     resistance_parser.add_argument('-V', type=float, required=True, help='Voltage in volts')
     resistance_parser.add_argument('-I', type=float, required=True, help='Current in amperes')
 
+    watts_parser = subparsers.add_parser('watts', help='Calculate watts\'s Law')
+    watts_parser.add_argument('-R', type=float, required=True, help='Resistance in amperes')
+    watts_parser.add_argument('-I', type=float, required=True, help='Current in amperes')
+
     # Subparser for find_resistor operation
     find_resistor_parser = subparsers.add_parser('find_resistor', help='Calculate resistor value to limit current')
     find_resistor_parser.add_argument('--source', type=float, required=True, help='Source voltage in volts')
@@ -58,6 +67,8 @@ def main() -> str:
         result = str(calculate_current(args.V, args.R)) + " A"
     elif args.operation == 'resistance':
         result = str(calculate_resistance(args.V, args.I)) + " Ohms"
+    elif args.operation == 'watts':
+        result = str(calculate_watts(args.R, args.I)) + " Watts"
     elif args.operation == 'find_resistor':
         result = str(find_resistor(args.source, args.component_voltage, args.component_current)) + " Ohms"
 

@@ -1,3 +1,5 @@
+
+
 class Ohms:
     """A class representing basic electrical calculations based on Ohm's Law."""
     
@@ -43,6 +45,36 @@ class Ohms:
         R = V / I
         return R
     
+    def watts(self, I: float, R: float) -> float:
+        """
+        Calculate electrical power in watts using current and resistance.
+
+        This method uses the formula P = I^2 * R to calculate electrical power,
+        where P is the power in watts, I is the current in amperes, and R is the
+        resistance in ohms.
+
+        Parameters:
+        -----------
+        I : float
+            Electrical current in amperes (A).
+        R : float
+            Electrical resistance in ohms (Ω).
+
+        Returns:
+        --------
+        float
+            Electrical power in watts (W).
+
+        Example:
+        --------
+        >>> calculator = Ohms()
+        >>> power = calculator.watts(3.0, 5.0)
+        >>> print(power)
+        45.0
+        """
+        W = I**2 * R
+        return W
+    
     def find_resistor(self, 
                     source: float,
                     component_voltage: float,
@@ -63,7 +95,6 @@ class Ohms:
         Returns:
             float: The resistance value needed for the circuit in ohms.
         """
-        
         
         U = source - component_voltage
         R = U / component_current

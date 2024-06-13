@@ -26,7 +26,7 @@ from ohmslaw import Ohms
 ```python
 
 o = Ohms()
-results = o.volts(I=2, R=4)
+results = o.volts(2, 4)
 
 print(results)
 
@@ -37,7 +37,7 @@ print(results)
 ```python
 
 o = Ohms()
-results = o.current(V=12, R=4)
+results = o.current(12, 4)
 
 print(results)
 
@@ -48,7 +48,7 @@ print(results)
 ```python
 
 o = Ohms()
-results = o.resistance(V=48, I=4)
+results = o.resistance(48, 4)
 
 print(results)
 
