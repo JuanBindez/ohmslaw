@@ -8,8 +8,11 @@ volts:
         >>> from ohmslaw import Ohms
         >>> 
         >>> o = Ohms()
-        >>> results = o.current(12, 4)
+        >>> results = o.volts(12, 4)
+        >>> 
         >>> 
         >>> print(results)
-        3.0
+        48
+        >>> 
+
 
