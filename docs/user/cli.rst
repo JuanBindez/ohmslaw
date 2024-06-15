@@ -26,7 +26,7 @@ Watts:
 
 .. code:: bash
 
-    $ ohmslaw watts R 15 I 20
+    $ ohmslaw watts -R 15 -I 20
 
 Find resistor:
 
