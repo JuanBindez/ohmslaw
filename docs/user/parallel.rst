@@ -13,5 +13,5 @@ Parallel
         >>> parallel = o.parallel(R1, R2, R3)
         >>> 
         >>> print("Resistor in parallel = ", parallel)
-        Resistor in parallel =  63.31658291457286
+        Resistors in parallel =  63.31658291457286
         >>> 
