@@ -5,14 +5,10 @@ volts:
 
 **calculate volts using ohms law:**::
 
-        >>> from ohmslaw import Ohms
-        >>> 
         >>> o = Ohms()
-        >>> results = o.volts(12, 4)
-        >>> 
+        >>> results = o.volts(I=12, R=4)
         >>> 
         >>> print(results)
         48
         >>> 
-
 

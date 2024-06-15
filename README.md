@@ -24,33 +24,47 @@ from ohmslaw import Ohms
 ### current multiplied by resistance = voltage
 
 ```python
-
-o = Ohms()
-results = o.volts(2, 4)
-
-print(results)
+>>> o = Ohms()
+>>> results = o.volts(I=12, R=4)
+>>> 
+>>> print(results)
+48
+>>> 
 
 ```
 
 ### voltage Divided by resistance = current
 
 ```python
-
-o = Ohms()
-results = o.current(12, 4)
-
-print(results)
-
+>>> o = Ohms()
+>>> results = o.current(V=12, R=4)
+>>> 
+>>> print(results)
+3.0
+>>> 
 ```
 
 ### voltage divided by current = resistance
 
 ```python
+>>> o = Ohms()
+>>> results = o.resistance(V=48, I=4)
+>>> 
+>>> print(results)
+12.0
+>>> 
 
-o = Ohms()
-results = o.resistance(48, 4)
+```
 
-print(results)
+### Watts
+
+```python
+>>> o = Ohms()
+>>> results = o.watts(I=2, R=15)
+>>> 
+>>> print(results)
+60
+>>> 
 
 ```
 
@@ -58,9 +72,13 @@ print(results)
 
 ```python
 
-o = Ohms()
-results = o.find_resistor(source=48, component_voltage=12)# Led
-
-print(results)
+>>> o = Ohms()
+>>> results = o.find_resistor(source=48, 
+...                           component_voltage=12,
+...                           component_current=1)
+>>> 
+>>> print(results)
+36.0
+>>> 
 
 ```
