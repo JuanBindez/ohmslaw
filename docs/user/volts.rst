@@ -1,7 +1,7 @@
 .. _volts:
 
-volts:
-======
+volts
+=====
 
 **calculate volts using ohms law:**::
 

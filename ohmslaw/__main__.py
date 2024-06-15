@@ -99,3 +99,28 @@ class Ohms:
         U = source - component_voltage
         R = U / component_current
         return R
+    
+    def series(self, *resistors: float) -> float:
+        """
+        Calculate the total resistance of resistors in series.
+
+        Parameters:
+            resistors (float): Resistances of the resistors in ohms.
+
+        Returns:
+            float: The total resistance in ohms.
+        """
+        return sum(resistors)
+    
+    def parallel(self, *resistors: float) -> float:
+        """
+        Calculate the total resistance of resistors in parallel.
+
+        Parameters:
+            resistors (float): Resistances of the resistors in ohms.
+
+        Returns:
+            float: The total resistance in ohms.
+        """
+        inverse_total_resistance = sum(1/r for r in resistors)
+        return 1 / inverse_total_resistance

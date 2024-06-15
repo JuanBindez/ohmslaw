@@ -1,7 +1,7 @@
 git add .
-git commit -m 'ohmslaw 1.0.0 Released'
+git commit -m 'ohmslaw update'
 git push -u origin main
-git tag v1.0.0
+git tag v1.1a
 git push --tag
 make clean
 make upload

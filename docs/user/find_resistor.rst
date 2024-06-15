@@ -1,7 +1,7 @@
 .. _find_resistor:
 
-Find Resistor:
-==============
+Find Resistor
+=============
 
 **find the resistance value to limit the electrical voltage of a circuit:**::
 

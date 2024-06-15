@@ -53,6 +53,8 @@ of ohmslaw.
    user/resistance
    user/watts
    user/find_resistor
+   user/parallel
+   user/series
 
 
 The API Documentation

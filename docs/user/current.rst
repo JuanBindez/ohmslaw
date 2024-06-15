@@ -1,7 +1,7 @@
 .. _current:
 
-Current:
-========
+Current
+=======
 
 **returns the electrical current:**::
 

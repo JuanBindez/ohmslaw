@@ -1,7 +1,7 @@
 .. _resistance:
 
-Resistance:
-===========
+Resistance
+==========
 
 **calculate resistance in ohms:**::
 
