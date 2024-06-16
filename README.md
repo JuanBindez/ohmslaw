@@ -34,7 +34,7 @@ from ohmslaw import Ohms
 >>> 
 >>> def calculate_voltage(selected_resistors):
 ...     total_resistance = o.series(*selected_resistors)
-...     total_current = SOURCE_VOLTAGE / total_resistance
+...     total_current = o.current(SOURCE_VOLTAGE, total_resistance)
 ...     led_voltage = total_current * LED_VOLTAGE
 ...     return led_voltage
 ... 
