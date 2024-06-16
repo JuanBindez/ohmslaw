@@ -55,6 +55,7 @@ of ohmslaw.
    user/find_resistor
    user/parallel
    user/series
+   user/combinations
 
 
 The API Documentation
