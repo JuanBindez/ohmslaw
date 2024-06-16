@@ -56,6 +56,7 @@ of ohmslaw.
    user/parallel
    user/series
    user/combinations
+   user/best_combinations
 
 
 The API Documentation
