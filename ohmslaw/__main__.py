@@ -124,3 +124,34 @@ class Ohms:
         """
         inverse_total_resistance = sum(1/r for r in resistors)
         return 1 / inverse_total_resistance
+    
+    def best_combination(self, source_voltage: float, component_voltage: float, component_current: float, resistors: list) -> tuple:
+        """
+        Find the best combination of resistors to achieve the desired voltage drop across the component.
+
+        Parameters:
+            source_voltage (float): The voltage of the power source in volts.
+            component_voltage (float): The desired voltage drop across the component in volts.
+            component_current (float): The desired current for the component in amperes.
+            resistors (list): A list of available resistors in ohms.
+
+        Returns:
+            tuple: The best combination of resistors and the resulting voltage across the component.
+        """
+        from itertools import combinations
+
+        best_combination = None
+        closest_voltage = float('inf')
+        target_voltage = source_voltage - component_voltage
+
+        for r in range(1, len(resistors) + 1):
+            for combo in combinations(resistors, r):
+                total_resistance = self.series(*combo)
+                current = source_voltage / (total_resistance + (component_voltage / component_current))
+                voltage_across_component = current * total_resistance
+                if abs(voltage_across_component - component_voltage) < abs(closest_voltage - component_voltage):
+                    closest_voltage = voltage_across_component
+                    best_combination = combo
+
+        return best_combination, closest_voltage
+
