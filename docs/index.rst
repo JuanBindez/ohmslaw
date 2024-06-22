@@ -55,7 +55,6 @@ of ohmslaw.
    user/find_resistor
    user/parallel
    user/series
-   user/combinations
    user/best_combinations
 
 
