@@ -1,3 +1,4 @@
+from itertools import combinations
 
 
 class Ohms:
@@ -76,11 +77,10 @@ class Ohms:
         return W
     
     def find_resistor(self, 
-                    source: float,
-                    component_voltage: float,
-                    component_current: float = 0.02 # initial velue for LED, change the velue in another componets
-                    ) -> float:
-        
+                  source: float,
+                  component_voltage: float,
+                  component_current: float = 0.02 # initial value for LED, change the value for other components
+                  ) -> float:
         """
         Calculate the resistor value needed to limit the current flowing through a component using Ohm's Law.
 
@@ -96,9 +96,10 @@ class Ohms:
             float: The resistance value needed for the circuit in ohms.
         """
         
-        U = source - component_voltage
-        R = U / component_current
+        U = source - component_voltage  # Calcula a tensão sobre o resistor
+        R = U / component_current       # Calcula a resistência usando a Lei de Ohm
         return R
+
     
     def series(self, *resistors: float) -> float:
         """
@@ -138,8 +139,6 @@ class Ohms:
         Returns:
             tuple: The best combination of resistors and the resulting voltage across the component.
         """
-        from itertools import combinations
-
         best_combination = None
         closest_voltage = float('inf')
         target_voltage = source_voltage - component_voltage
@@ -147,8 +146,9 @@ class Ohms:
         for r in range(1, len(resistors) + 1):
             for combo in combinations(resistors, r):
                 total_resistance = self.series(*combo)
-                current = source_voltage / (total_resistance + (component_voltage / component_current))
-                voltage_across_component = current * total_resistance
+                total_current = source_voltage / (total_resistance + (component_voltage / component_current))
+                voltage_drop_across_resistors = total_current * total_resistance
+                voltage_across_component = source_voltage - voltage_drop_across_resistors
                 if abs(voltage_across_component - component_voltage) < abs(closest_voltage - component_voltage):
                     closest_voltage = voltage_across_component
                     best_combination = combo
