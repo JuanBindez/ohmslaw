@@ -52,10 +52,8 @@ of ohmslaw.
    user/current
    user/resistance
    user/watts
-   user/find_resistor
    user/parallel
    user/series
-   user/best_combinations
 
 
 The API Documentation

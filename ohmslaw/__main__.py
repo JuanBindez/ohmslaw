@@ -75,30 +75,6 @@ class Ohms:
         """
         W = I**2 * R
         return W
-    
-    def find_resistor(self, 
-                  source: float,
-                  component_voltage: float,
-                  component_current: float = 0.02 # initial value for LED, change the value for other components
-                  ) -> float:
-        """
-        Calculate the resistor value needed to limit the current flowing through a component using Ohm's Law.
-
-        This method calculates the resistor value needed to limit the current flowing through a component
-        to a specified value, considering the source voltage and the forward voltage drop of the component.
-
-        Parameters:
-            source (float): The voltage of the power source in volts.
-            component_voltage (float): The forward voltage drop of the component in volts.
-            component_current (float): The desired current for the component in amperes.
-
-        Returns:
-            float: The resistance value needed for the circuit in ohms.
-        """
-        
-        U = source - component_voltage  # Calcula a tensão sobre o resistor
-        R = U / component_current       # Calcula a resistência usando a Lei de Ohm
-        return R
 
     
     def series(self, *resistors: float) -> float:
@@ -125,33 +101,3 @@ class Ohms:
         """
         inverse_total_resistance = sum(1/r for r in resistors)
         return 1 / inverse_total_resistance
-    
-    def best_combination(self, source_voltage: float, component_voltage: float, component_current: float, resistors: list) -> tuple:
-        """
-        Find the best combination of resistors to achieve the desired voltage drop across the component.
-
-        Parameters:
-            source_voltage (float): The voltage of the power source in volts.
-            component_voltage (float): The desired voltage drop across the component in volts.
-            component_current (float): The desired current for the component in amperes.
-            resistors (list): A list of available resistors in ohms.
-
-        Returns:
-            tuple: The best combination of resistors and the resulting voltage across the component.
-        """
-        best_combination = None
-        closest_voltage = float('inf')
-        target_voltage = source_voltage - component_voltage
-
-        for r in range(1, len(resistors) + 1):
-            for combo in combinations(resistors, r):
-                total_resistance = self.series(*combo)
-                total_current = source_voltage / (total_resistance + (component_voltage / component_current))
-                voltage_drop_across_resistors = total_current * total_resistance
-                voltage_across_component = source_voltage - voltage_drop_across_resistors
-                if abs(voltage_across_component - component_voltage) < abs(closest_voltage - component_voltage):
-                    closest_voltage = voltage_across_component
-                    best_combination = combo
-
-        return best_combination, closest_voltage
-
