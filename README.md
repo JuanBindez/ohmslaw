@@ -22,6 +22,7 @@
 from ohmslaw import Ohms
 ```
 
+
 ### you can calculate the resistors in series, passing the values ​​in the series() method
 
 ```python
